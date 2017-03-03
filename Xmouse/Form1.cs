@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.IO;
+
 namespace Xmouse
 {
     public partial class Xmouse : Form
@@ -48,9 +50,14 @@ namespace Xmouse
         {
             SwapMouseButton(true);//设置成左手
             LabelText.Text = "左手鼠标";
-            IntPtr cur = LoadCursorFromFile("aero_arrow_left.cur");//鼠标图标路径  
 
-            Boolean a = SetSystemCursor(cur, 32512);//32512
+            string lcur = "aero_arrow_left.cur";
+            if (File.Exists(lcur))
+            {
+                IntPtr cur = LoadCursorFromFile(lcur);//鼠标图标路径  
+                Boolean a = SetSystemCursor(cur, 32512);//32512
+            }
+
             pictureBox2.Visible = false;
             pictureBox1.Visible = true;
 
@@ -59,10 +66,13 @@ namespace Xmouse
         {
             SwapMouseButton(false);//设置成右手 aero_arrow.cur
             LabelText.Text = "右手鼠标";
+            string rcur = "aero_arrow.cur";
+            if (File.Exists(rcur))
+            {
+                IntPtr cur = LoadCursorFromFile(rcur);//鼠标图标路径  
+                Boolean a = SetSystemCursor(cur, 32512);//32512
+            }
 
-            IntPtr cur = LoadCursorFromFile("aero_arrow.cur");//鼠标图标路径  
-
-            Boolean a = SetSystemCursor(cur, 32512);//32512
             pictureBox1.Visible = false;
             pictureBox2.Visible = true;
 
