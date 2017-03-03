@@ -9,4 +9,24 @@
  ![image](screenshot/目录.png)
 
 # 使用方法
-看截图就行了
+- 1、运行Xmouse.exe，程序就会判断鼠标的左右手设置，如果是右手那么自动切换到左手。
+
+![image](screenshot/左手鼠标.png)
+
+- 2、如果是系统设置是左手则自动设置为右手。
+
+![image](screenshot/右手鼠标.png)
+
+- 3、点击文字左右侧的小手也可以实时切换左右手。
+
+# 技术
+- 开发工具 `visual studio 2017 RC版本` 马上换正式版本
+- markdown 工具 `visual studio code` 真心好用
+- .net 版本 `2.0`
+- 调用组件 `user32.dll`
+- 代码管理 `git`
+
+# 下载
+不用自己编译就直接点击 [下载](http://www.jqpress.com/works/Xmouse.rar) 吧
+# 关于作者
+不会写代码的产品经理不是好售前。个人博客 [jqpress.com](http://www.jqpress.com)
