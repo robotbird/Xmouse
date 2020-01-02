@@ -29,4 +29,4 @@
 # 下载
 不用自己编译就直接点击 [下载](screenshot/Xmouse.rar) 吧
 # 关于作者
-不会写代码的产品经理不是好售前。个人博客 [jqpress.com](http://www.jqpress.com)
+不会写代码的产品经理不是好售前。个人博客 [jqpress.com](http://www.jqpress.com)，微信联系：robotbird798
