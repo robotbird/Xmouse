@@ -93,5 +93,18 @@ namespace Xmouse
         {
             System.Diagnostics.Process.Start("https://github.com/robotbird/Xmouse");
         }
+
+        private void Xmouse_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+               // e.Cansel = true;
+
+                this.WindowState = FormWindowState.Minimized;
+                this.mainNotifyIcon.Visible = true;
+                this.Hide();
+                return;
+            }
+        }
     }
 }
