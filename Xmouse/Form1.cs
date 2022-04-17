@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO;
 
+
 namespace Xmouse
 {
     public partial class Xmouse : Form
@@ -33,6 +34,7 @@ namespace Xmouse
         public Xmouse()
         {
             InitializeComponent();
+
             int flag = GetSystemMetrics(23);//获取当前鼠标设置状态 
             if (flag == 0)//左手习惯 
             {
@@ -43,9 +45,24 @@ namespace Xmouse
                 RightMouse();
 
             }
-
-
+            this.Resize += Form1_Resize;
         }
+
+
+        //单机窗体最小化时窗体隐藏 
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+            }
+        }
+        void MyNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show(); // 窗体显现
+            this.WindowState = FormWindowState.Normal; //窗体回复正常大小
+        }
+
         void LeftMouse()
         {
             SwapMouseButton(true);//设置成左手
@@ -94,17 +111,25 @@ namespace Xmouse
             System.Diagnostics.Process.Start("https://github.com/robotbird/Xmouse");
         }
 
-        private void Xmouse_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(e.CloseReason == CloseReason.UserClosing)
-            {
-               // e.Cansel = true;
 
+        private void Xmouse_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 注意判断关闭事件reason来源于窗体按钮，否则用菜单退出时无法退出!
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                //取消"关闭窗口"事件
+                e.Cancel = true;
+                //使关闭时窗口向右下角缩小的效果
                 this.WindowState = FormWindowState.Minimized;
                 this.mainNotifyIcon.Visible = true;
                 this.Hide();
                 return;
             }
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

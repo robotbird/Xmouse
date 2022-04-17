@@ -36,8 +36,10 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.mainNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.mainNotifyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.mainNotifyContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabelText
@@ -91,11 +93,21 @@
             this.mainNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainNotifyIcon.Icon")));
             this.mainNotifyIcon.Text = "Xmouse";
             this.mainNotifyIcon.Visible = true;
+            this.mainNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MyNotifyIcon_MouseDoubleClick);
             // 
             // mainNotifyContextMenuStrip
             // 
+            this.mainNotifyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.退出ToolStripMenuItem});
             this.mainNotifyContextMenuStrip.Name = "mainNotifyContextMenuStrip";
-            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(61, 4);
+            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.Logout_Click);
             // 
             // Xmouse
             // 
@@ -109,9 +121,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Xmouse";
             this.Text = "Xmouse";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Xmouse_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Xmouse_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.mainNotifyContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +137,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.NotifyIcon mainNotifyIcon;
         private System.Windows.Forms.ContextMenuStrip mainNotifyContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
     }
 }
 
