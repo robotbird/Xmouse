@@ -36,6 +36,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.mainNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.mainNotifyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menu_mouse_left = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_mouse_right = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -83,7 +85,7 @@
             this.linkLabel1.Size = new System.Drawing.Size(29, 12);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "作者";
+            this.linkLabel1.Text = "关于";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Silver;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
@@ -98,9 +100,27 @@
             // mainNotifyContextMenuStrip
             // 
             this.mainNotifyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_mouse_left,
+            this.menu_mouse_right,
             this.退出ToolStripMenuItem});
             this.mainNotifyContextMenuStrip.Name = "mainNotifyContextMenuStrip";
-            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(101, 70);
+            // 
+            // menu_mouse_left
+            // 
+            this.menu_mouse_left.Image = ((System.Drawing.Image)(resources.GetObject("menu_mouse_left.Image")));
+            this.menu_mouse_left.Name = "menu_mouse_left";
+            this.menu_mouse_left.Size = new System.Drawing.Size(180, 22);
+            this.menu_mouse_left.Text = "左手";
+            this.menu_mouse_left.Click += new System.EventHandler(this.Left_Click);
+            // 
+            // menu_mouse_right
+            // 
+            this.menu_mouse_right.Image = ((System.Drawing.Image)(resources.GetObject("menu_mouse_right.Image")));
+            this.menu_mouse_right.Name = "menu_mouse_right";
+            this.menu_mouse_right.Size = new System.Drawing.Size(180, 22);
+            this.menu_mouse_right.Text = "右手";
+            this.menu_mouse_right.Click += new System.EventHandler(this.Right_Click);
             // 
             // 退出ToolStripMenuItem
             // 
@@ -138,6 +158,8 @@
         private System.Windows.Forms.NotifyIcon mainNotifyIcon;
         private System.Windows.Forms.ContextMenuStrip mainNotifyContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_mouse_left;
+        private System.Windows.Forms.ToolStripMenuItem menu_mouse_right;
     }
 }
 

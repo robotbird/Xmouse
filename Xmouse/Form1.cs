@@ -63,10 +63,16 @@ namespace Xmouse
             this.WindowState = FormWindowState.Normal; //窗体回复正常大小
         }
 
+        private void Left_Click(object sender, EventArgs e)
+        {
+            LeftMouse();
+        }
         void LeftMouse()
         {
             SwapMouseButton(true);//设置成左手
             LabelText.Text = "左手鼠标";
+            menu_mouse_left.Text = "左手(√)";
+            menu_mouse_right.Text = "右手";
 
             string lcur = "aero_arrow_left.cur";
             if (File.Exists(lcur))
@@ -79,10 +85,18 @@ namespace Xmouse
             pictureBox1.Visible = true;
 
         }
+
+
+        private void Right_Click(object sender, EventArgs e)
+        {
+            RightMouse();
+        }
         void RightMouse()
         {
             SwapMouseButton(false);//设置成右手 aero_arrow.cur
             LabelText.Text = "右手鼠标";
+            menu_mouse_left.Text = "左手";
+            menu_mouse_right.Text = "右手(√)";
             string rcur = "aero_arrow.cur";
             if (File.Exists(rcur))
             {
@@ -129,7 +143,10 @@ namespace Xmouse
 
         private void Logout_Click(object sender, EventArgs e)
         {
+            this.mainNotifyIcon.Visible = false;
             this.Close();
+            this.Dispose();
+            Application.Exit();
         }
     }
 }
