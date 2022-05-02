@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO;
-
+using System.Collections;
 
 namespace Xmouse
 {
@@ -71,8 +71,9 @@ namespace Xmouse
         {
             SwapMouseButton(true);//设置成左手
             LabelText.Text = "左手鼠标";
-            menu_mouse_left.Text = "左手(√)";
-            menu_mouse_right.Text = "右手";
+            mainNotifyIcon.Text = "左手鼠标";
+            menu_mouse_left.Text = "左手Alt+L(√)";
+            menu_mouse_right.Text = "右手Alt+R";
 
             string lcur = "aero_arrow_left.cur";
             if (File.Exists(lcur))
@@ -95,8 +96,9 @@ namespace Xmouse
         {
             SwapMouseButton(false);//设置成右手 aero_arrow.cur
             LabelText.Text = "右手鼠标";
-            menu_mouse_left.Text = "左手";
-            menu_mouse_right.Text = "右手(√)";
+            mainNotifyIcon.Text = "右手鼠标";
+            menu_mouse_left.Text = "左手Alt+L";
+            menu_mouse_right.Text = "右手Alt+R(√)";
             string rcur = "aero_arrow.cur";
             if (File.Exists(rcur))
             {
@@ -147,6 +149,94 @@ namespace Xmouse
             this.Close();
             this.Dispose();
             Application.Exit();
+        }
+
+
+        private int Key_L;
+        private int Key_R;
+
+        public void OnHotkey(int HotkeyID) //Ctrl+F3隐藏窗体，再按显示窗体。
+        {
+            if (!this.Visible)
+            {
+               
+                this.BackColor = Color.White;
+                this.TransparencyKey = Color.White;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.linkLabel1.Visible = false;
+
+                this.Show();
+                this.TopMost = true;
+                this.WindowState = FormWindowState.Normal;
+
+                countdown.Visible = true;
+                timer1.Enabled = false;
+                timer1.Start();
+                DateTime dt = System.DateTime.Now.AddSeconds(-3);//把结束的时间写在里面，注意格式哦
+                TimeSpan ts = System.DateTime.Now - dt;//用结束的时间减去现在系统显示的时间
+                Seconds = ts.Seconds;
+
+                ShowTime();
+            }
+
+
+            if (HotkeyID == Key_L)
+            {
+                LeftMouse();
+            }
+
+            if (HotkeyID == Key_R)
+            {
+                RightMouse();
+            }
+
+        }
+
+        int Seconds;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Tools.SetMid(this);
+            Hotkey hotkey;
+            hotkey = new Hotkey(this.Handle);
+            Key_L = hotkey.RegisterHotkey(System.Windows.Forms.Keys.L, Hotkey.KeyFlags.MOD_ALT);   //定义快键(Alt+L)
+            Key_R = hotkey.RegisterHotkey(System.Windows.Forms.Keys.R, Hotkey.KeyFlags.MOD_ALT);   //定义快键(Alt+R)
+            hotkey.OnHotkey += new HotkeyEventHandler(OnHotkey);
+            countdown.Visible = false;
+
+        }
+
+       
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Seconds--;
+            if (Seconds <= 0)
+            {
+                timer1.Stop();
+
+                if (Seconds != -1)
+                {
+                    this.WindowState = FormWindowState.Minimized;
+                    this.Close();
+                }
+                
+            }
+            ShowTime();
+        }
+        private void ShowTime()
+        {
+            countdown.ForeColor = Color.Red;
+            countdown.Text = string.Format("{0:d1}S", Seconds);
+
+        }
+
+        private void mainNotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+            this.TransparencyKey = Color.Empty;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+
+            countdown.Visible = false;
+            linkLabel1.Visible = true;
         }
     }
 }

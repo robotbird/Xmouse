@@ -39,6 +39,8 @@
             this.menu_mouse_left = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_mouse_right = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countdown = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.mainNotifyContextMenuStrip.SuspendLayout();
@@ -80,7 +82,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.Gray;
-            this.linkLabel1.Location = new System.Drawing.Point(110, 66);
+            this.linkLabel1.Location = new System.Drawing.Point(115, 69);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(29, 12);
             this.linkLabel1.TabIndex = 4;
@@ -95,6 +97,7 @@
             this.mainNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainNotifyIcon.Icon")));
             this.mainNotifyIcon.Text = "Xmouse";
             this.mainNotifyIcon.Visible = true;
+            this.mainNotifyIcon.DoubleClick += new System.EventHandler(this.mainNotifyIcon_DoubleClick);
             this.mainNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MyNotifyIcon_MouseDoubleClick);
             // 
             // mainNotifyContextMenuStrip
@@ -110,7 +113,7 @@
             // 
             this.menu_mouse_left.Image = ((System.Drawing.Image)(resources.GetObject("menu_mouse_left.Image")));
             this.menu_mouse_left.Name = "menu_mouse_left";
-            this.menu_mouse_left.Size = new System.Drawing.Size(180, 22);
+            this.menu_mouse_left.Size = new System.Drawing.Size(100, 22);
             this.menu_mouse_left.Text = "左手";
             this.menu_mouse_left.Click += new System.EventHandler(this.Left_Click);
             // 
@@ -118,22 +121,37 @@
             // 
             this.menu_mouse_right.Image = ((System.Drawing.Image)(resources.GetObject("menu_mouse_right.Image")));
             this.menu_mouse_right.Name = "menu_mouse_right";
-            this.menu_mouse_right.Size = new System.Drawing.Size(180, 22);
+            this.menu_mouse_right.Size = new System.Drawing.Size(100, 22);
             this.menu_mouse_right.Text = "右手";
             this.menu_mouse_right.Click += new System.EventHandler(this.Right_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // countdown
+            // 
+            this.countdown.AutoSize = true;
+            this.countdown.Location = new System.Drawing.Point(124, 47);
+            this.countdown.Name = "countdown";
+            this.countdown.Size = new System.Drawing.Size(0, 12);
+            this.countdown.TabIndex = 5;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Xmouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 87);
+            this.ClientSize = new System.Drawing.Size(278, 101);
+            this.Controls.Add(this.countdown);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -142,6 +160,7 @@
             this.Name = "Xmouse";
             this.Text = "Xmouse";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Xmouse_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.mainNotifyContextMenuStrip.ResumeLayout(false);
@@ -160,6 +179,8 @@
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu_mouse_left;
         private System.Windows.Forms.ToolStripMenuItem menu_mouse_right;
+        private System.Windows.Forms.Label countdown;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
