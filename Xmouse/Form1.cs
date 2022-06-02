@@ -124,7 +124,9 @@ namespace Xmouse
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/robotbird/Xmouse");
+            About about = new About();
+            about.Show();
+           // System.Diagnostics.Process.Start("https://github.com/robotbird/Xmouse");
         }
 
 
@@ -155,7 +157,7 @@ namespace Xmouse
         private int Key_L;
         private int Key_R;
 
-        public void OnHotkey(int HotkeyID) //Ctrl+F3隐藏窗体，再按显示窗体。
+        public void OnHotkey(int HotkeyID)
         {
             if (!this.Visible)
             {
@@ -237,6 +239,13 @@ namespace Xmouse
 
             countdown.Visible = false;
             linkLabel1.Visible = true;
+        }
+
+     
+        private void menu_about_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.Show();
         }
     }
 }
