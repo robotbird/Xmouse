@@ -22,7 +22,7 @@ namespace Xmouse
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"mailto:robotbird798@gmail.com");
+            System.Diagnostics.Process.Start(@"mailto:robotbird@qq.com");
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
@@ -39,6 +39,21 @@ namespace Xmouse
         private void pictureBox3_MouseHover(object sender, EventArgs e)
         {
             Tools.ToolTip("关注微信公众号", pictureBox3);
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/robotbird/Xmouse");
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://weibo.com/u/5305620304");
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://twitter.com/PMAndDog");
         }
     }
 }
