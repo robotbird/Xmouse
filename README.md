@@ -40,5 +40,5 @@
 # 下载
  [下载地址](https://github.com/robotbird/Xmouse/releases) 
 # 关于作者
-不会写代码的产品经理不是好售前。个人博客 [jqpress.com](http://www.jqpress.com)，微信公众号：产品经理与狗
+产品经理一枚，热爱哲学，心理学以及滑板，个人博客 [jqpress.com](http://www.jqpress.com)，微信公众号：产品经理与狗
 ![image](Xmouse/img/PMAndDog.jpg)
